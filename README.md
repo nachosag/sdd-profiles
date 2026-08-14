@@ -1,22 +1,51 @@
 # SDD Profiles
 
-Repository documenting which AI models to assign to each Gentle-AI subagent (the 19 agents of the SDD flow), per profile (Balanced, Efficient), kept in sync with the available models of each subscription.
+A repository that documents which AI model to assign to each of gentle-ai's SDD subagents, per profile, kept in sync with the models your subscriptions actually offer each month.
 
 ## 3-layer structure
 
+Separating things by how often they change keeps the repo from going stale:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Stable knowledge      subagents.md · rules.example.md          │  ← changes rarely
+├─────────────────────────────────────────────────────────────────┤
+│  Volatile data         subscriptions/<name>/<YYYY-MM>.md        │  ← changes monthly
+├─────────────────────────────────────────────────────────────────┤
+│  Derived output        profiles/<name>/<YYYY-MM>.md             │  ← regenerated, not hand-edited
+└─────────────────────────────────────────────────────────────────┘
+```
+
 | Layer | Files | What it contains |
 |---|---|---|
-| Stable knowledge | `subagents.md`, `rules.example.md` | Catalog of the 19 subagents and universal assignment rules (P1–P7, decision matrix, golden rule). |
-| Versioned data | `subscriptions/`, `profiles/` | Models and prices of each subscription, and assignments per profile, organized by month. |
-| Personal config | `rules.md`, `considerations.md` | The user's own rules and considerations, gitignored (templates in `*.example.md`). |
+| Stable knowledge | `subagents.md`, `rules.example.md` | The 19 SDD subagents and their needs, plus the universal assignment rules (P1–P7, decision matrix, golden rule). |
+| Volatile data | `subscriptions/` | Each subscription's model catalog — prices, context, reasoning, vision, tools, usage, limits — versioned by month. |
+| Derived output | `profiles/` | The model assignment per profile (balanced, efficient), regenerated monthly from the two layers above. |
+| Personal config | `rules.md`, `considerations.md` | Your own rules and context, gitignored (templates in `*.example.md`). |
 
 ## Quick start
 
-1. Clone the repository.
-2. Create `rules.md` and `considerations.md` from the `*.example.md` templates and fill them in with your context.
-3. Tell your agent which profiles (`balanced`, `efficient`) and subscriptions (`opencode-go`, `opencode-zen-free`) you want to use.
-4. When the models change, ask it to "update my profiles".
+1. **Clone** the repository.
+2. Open your coding agent (OpenCode, Claude, Pi, …) inside it.
+3. Say **"start"** — the `start` skill asks for your subscriptions, budget, and preferences, then generates your profiles.
+4. Later, say **"update my profiles"** to refresh the data and regenerate.
 
 ## Skills
 
-The skills (agents that automate creating, updating, and verifying profiles) are created in a later phase, under `skills/`.
+| Skill | Trigger | What it does |
+|---|---|---|
+| `start` | "start", "get started", "comenzar", "empezar" | First-time guided setup: collects rules/considerations, creates profiles. |
+| `update-sdd-profiles` | "update/refresh my profiles" / "actualizar mis perfiles" | Full flow: sync data + regenerate all profiles. |
+| `sync-sdd-profiles` | "sync data", "drift", "refrescar datos" | Refresh data only and report drift. |
+| `create-sdd-profile` | "create a new profile X" / "crear un perfil nuevo" | Add one new profile without touching existing ones. |
+
+## Documentation
+
+| Doc | What it covers |
+|---|---|
+| [Architecture](./docs/architecture.md) | Why the repo is split into three layers, and the core concepts. |
+| [Quickstart](./docs/quickstart.md) | The five-minute path from clone to generated profiles. |
+| [Rules vs considerations](./docs/rules-vs-considerations.md) | The distinction between directives (rules) and facts about your context (considerations). |
+| [Usage](./docs/usage.md) | The full workflow: the four skills, triggers, and the sync→update chain. |
+| [File reference](./docs/file-reference.md) | Every file and directory, its purpose and format. |
+| [Contributing](./docs/contributing.md) | How to add subscriptions, profiles, and improve the shared knowledge. |
