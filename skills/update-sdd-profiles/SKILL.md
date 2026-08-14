@@ -13,18 +13,18 @@ MAIN ENTRY POINT. Activates when the user says "update/sync/refresh my profiles"
 
 ## Hard Rules
 
-- If `rules.md` or `considerations.md` do not exist or are empty → bootstrap first (ask for preferences, subscriptions, and rules; save them).
+- If `rules.md` or `considerations.md` are missing/empty → redirect the user to the `start` skill (first-time setup) instead of bootstrapping inline.
 - Do not regenerate a profile without fresh data (sync first).
 - Maintain the family invariant (verify ≠ apply, judge A ≠ B).
 
 ## Decision Gates
 
-- Is the config present? If not → bootstrap.
+- Is the config present? If not → redirect to `start`.
 - Is the data fresh? If not → sync before regenerating.
 
 ## Execution Steps
 
-1. Bootstrap if config is missing.
+1. If `rules.md` or `considerations.md` are missing/empty, redirect the user to the `start` skill (first-time setup) instead of bootstrapping inline.
 2. Run sync (subscription fetch + subagent detection).
 3. For each existing profile in `profiles/` (or those the user specifies), follow `../_shared/generate-profile.md` and regenerate `profiles/<name>/<YYYY-MM>.md`.
 
@@ -40,3 +40,4 @@ MAIN ENTRY POINT. Activates when the user says "update/sync/refresh my profiles"
 - `../../subagents.md`
 - `../../rules.example.md`
 - `../../considerations.example.md`
+- `../start/SKILL.md`

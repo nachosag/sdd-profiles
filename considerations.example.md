@@ -1,24 +1,9 @@
-# Personal considerations (template)
+# Considerations (example)
 
-Template for recording the user's personal context (subscriptions, budget, privacy, preferences) that conditions model assignments. Copy this file to `considerations.md` (gitignored) and fill in each section.
+> This is a filled-in EXAMPLE. Copy this file to `considerations.md` (gitignored) and replace with your own values.
 
-## subscriptions
-<!-- List of active subscriptions, e.g. opencode-go, opencode-zen-free. -->
-- [subscription-1]
-- [subscription-2]
-
-## budget
-<!-- Monthly cap or usage limits of each subscription. -->
-- [monthly cap]
-
-## expensive_threshold
-<!-- What "expensive" means for this user: input/1M price threshold. -->
-- [e.g. > $1.00 / 1M input]
-
-## privacy
-<!-- Data retention restrictions, e.g. do not send client code to models that train on the data. -->
-- [restriction]
-
-## preferences
-<!-- Provider/model family preferences. -->
-- [preference]
+- **subscriptions**: [opencode-go, opencode-zen-free]
+- **budget**: $60/month Go cap ($12 per 5h, $30 per week)
+- **expensive threshold**: > $1.00 per 1M input tokens
+- **privacy**: free models may train on submitted data — never use them for sensitive/client code
+- **preferences**: (optional) prefer OpenAI-family models for pure-reasoning phases

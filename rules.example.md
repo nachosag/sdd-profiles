@@ -55,3 +55,14 @@ Is the model expensive (>$1.00/1M input)?
 ```
 
 > Shared universal rules. Your personal rules go in `rules.md` (gitignored), which extend or override these.
+
+## Personal rules (examples)
+
+These are examples of personal rules you can add to your own `rules.md` (gitignored).
+Copy `rules.example.md` to `rules.md` and replace these examples with your own:
+
+- Prefer DeepSeek V4 Pro for `sdd-apply` because it fits my budget cap.
+- Never assign free models that train on my data to client-facing code.
+- Use Qwen3.7 Max for `sdd-propose` when the change touches auth/payments.
+- Avoid Usage $15 models in long-running phases (apply, orchestrator) to preserve the monthly cap.
+- For `sdd-verify`, prefer a model from a different family than apply, even if it costs slightly more.
