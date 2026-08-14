@@ -1,57 +1,57 @@
-# Reglas universales de asignación de modelos
+# Universal model assignment rules
 
-Reglas compartidas para asignar modelos a los 19 subagentes SDD. Son independientes de qué suscripciones tenga el usuario.
+Shared rules for assigning models to the 19 SDD subagents. They are independent of which subscriptions the user has.
 
-## Principios no negociables (P1–P7)
+## Non-negotiable principles (P1–P7)
 
-| # | Principio | Razón |
+| # | Principle | Reason |
 |---|---|---|
-| **P1** | **Modelos caros (>$1.00/1M input) SOLO en fases NO repetitivas y de ALTO impacto.** | `costo × volumen` en fases largas/repetitivas es injustificado. El beneficio marginal no compensa. |
-| **P2** | **Verify debe usar un modelo de FAMILIA DIFERENTE a apply.** | Principio autor ≠ auditor. Si el mismo modelo revisa lo que escribió, los sesgos se perpetúan. |
-| **P3** | **Judgment Day requiere dos modelos DIFERENTES entre sí para judge A y B.** | Revisión adversarial ciega con perspectivas independientes. Si ambos coinciden, el hallazgo es sólido. |
-| **P4** | **Fases de formateo/admin (tasks, init, archive, onboard) usan el modelo MÁS BARATO disponible.** | No requieren razonamiento. Pagar más no mejora el output. En Efficient, preferir Zen Free (costo cero). |
-| **P5** | **El orchestrator necesita 1M ctx + estabilidad, NO razonamiento premium.** | Su trabajo es routing confiable a lo largo de sesiones largas, no resolver problemas complejos. |
-| **P6** | **El costo del modelo debe ser proporcional a `(impacto del error) ÷ (frecuencia de ejecución)`.** | Fases de altísimo impacto pero baja frecuencia (propose, seguridad) justifican precio premium. Fases de alto impacto Y alta frecuencia (apply) necesitan el mejor modelo que se pueda pagar en volumen. |
-| **P7** | **`review-refuter` debe ser de familia distinta a la lente de review que generó el hallazgo que está evaluando.** | Un refuter del mismo laboratorio tiende a confirmar los sesgos del hallazgo que está evaluando. |
+| **P1** | **Expensive models (>$1.00/1M input) ONLY in NON-repetitive and HIGH-impact phases.** | `cost × volume` in long/repetitive phases is unjustified. The marginal benefit does not pay off. |
+| **P2** | **Verify must use a model from a DIFFERENT FAMILY than apply.** | Author ≠ auditor principle. If the same model reviews what it wrote, the biases are perpetuated. |
+| **P3** | **Judgment Day requires two DIFFERENT models for judge A and B.** | Blind adversarial review with independent perspectives. If both agree, the finding is solid. |
+| **P4** | **Formatting/admin phases (tasks, init, archive, onboard) use the CHEAPEST available model.** | They do not require reasoning. Paying more does not improve the output. In Efficient, prefer Zen Free (zero cost). |
+| **P5** | **The orchestrator needs 1M ctx + stability, NOT premium reasoning.** | Its job is reliable routing across long sessions, not solving complex problems. |
+| **P6** | **Model cost must be proportional to `(error impact) ÷ (execution frequency)`.** | Very high-impact but low-frequency phases (propose, security) justify a premium price. High-impact AND high-frequency phases (apply) need the best model you can afford at volume. |
+| **P7** | **`review-refuter` must be from a family different from the review lens that produced the finding it is evaluating.** | A refuter from the same lab tends to confirm the biases of the finding it is evaluating. |
 
-## Matriz de decisión
+## Decision matrix
 
-Para cada agente, evaluar contra 5 dimensiones. El tipo de modelo que necesita surge de esta matriz:
+For each agent, evaluate against 5 dimensions. The type of model it needs emerges from this matrix:
 
-| Agente | Costo justificable | Contexto | Razonamiento | Frecuencia×Duración | ¿Modelo distinto? |
+| Agent | Justifiable cost | Context | Reasoning | Frequency×Duration | Different model? |
 |---|---|---|---|---|---|
-| orchestrator | Bajo ($0.15–0.50) | 1M | Bajo | Muy alta × Muy larga | No |
-| init | Mínimo ($0.05–0.15) | 1M | Nulo | 1 vez × Corta | No |
-| explore | Medio ($0.15–1.00) | 1M | Medio | Media × Media | No |
-| propose | **Alto ($1.50–3.00)** | 1M | **Alto** | Baja × Corta | No |
-| spec | Medio ($0.40–1.00) | 272K+ | Bajo | Baja × Corta | No |
-| design | Bajo ($0.15–0.50) | 1M | Medio | Baja × Media | No |
-| tasks | Mínimo ($0.05–0.40) | 1M | Nulo | Alta × Corta | No |
-| apply | **Medio-bajo ($0.15–1.00)** | **1M** | **Alto** | **Muy alta × Muy larga** | No |
-| verify | **Medio-bajo ($0.15–1.00)** | 1M | Alto | **Alta × Media** | **✅ Diferente a apply** |
-| archive | **Cero si es posible** | 1M | Nulo | 1 vez × Cortísima | No |
-| onboard | Mínimo ($0.05–0.30) | 1M | Nulo | 1 vez × Media | No |
-| review-risk | **Alto ($1.50–3.00)** | 200K+ | **Extremo** | Media × Corta | Idealmente diferente a apply |
-| review-readability | Medio ($0.40–1.00) | 200K+ | Medio | Media × Corta | No |
-| review-reliability | Medio ($0.40–1.00) | 1M | Medio | Media × Corta | No |
-| review-resilience | Medio ($0.40–1.00) | 1M | Medio | Media × Corta | No |
-| review-refuter | **Alto ($0.40–3.00)** | 200K+ | **Extremo** | Casi nunca × Corta | **✅ Diferente a la review lens** |
-| jd-judge-a | **Alto ($1.50–3.00)** | 200K+ | **Extremo** | Casi nunca × Corta | **✅ Diferente a judge B** |
-| jd-judge-b | **Alto ($1.50–3.00)** | 200K+ | **Extremo** | Casi nunca × Corta | **✅ Diferente a judge A** |
-| jd-fix-agent | Medio ($0.40–1.00) | 200K+ | Bajo | Casi nunca × Corta | No |
+| orchestrator | Low ($0.15–0.50) | 1M | Low | Very high × Very long | No |
+| init | Minimum ($0.05–0.15) | 1M | Null | 1x × Short | No |
+| explore | Medium ($0.15–1.00) | 1M | Medium | Medium × Medium | No |
+| propose | **High ($1.50–3.00)** | 1M | **High** | Low × Short | No |
+| spec | Medium ($0.40–1.00) | 272K+ | Low | Low × Short | No |
+| design | Low ($0.15–0.50) | 1M | Medium | Low × Medium | No |
+| tasks | Minimum ($0.05–0.40) | 1M | Null | High × Short | No |
+| apply | **Medium-low ($0.15–1.00)** | **1M** | **High** | **Very high × Very long** | No |
+| verify | **Medium-low ($0.15–1.00)** | 1M | High | **High × Medium** | **✅ Different from apply** |
+| archive | **Zero if possible** | 1M | Null | 1x × Very short | No |
+| onboard | Minimum ($0.05–0.30) | 1M | Null | 1x × Medium | No |
+| review-risk | **High ($1.50–3.00)** | 200K+ | **Extreme** | Medium × Short | Ideally different from apply |
+| review-readability | Medium ($0.40–1.00) | 200K+ | Medium | Medium × Short | No |
+| review-reliability | Medium ($0.40–1.00) | 1M | Medium | Medium × Short | No |
+| review-resilience | Medium ($0.40–1.00) | 1M | Medium | Medium × Short | No |
+| review-refuter | **High ($0.40–3.00)** | 200K+ | **Extreme** | Almost never × Short | **✅ Different from the review lens** |
+| jd-judge-a | **High ($1.50–3.00)** | 200K+ | **Extreme** | Almost never × Short | **✅ Different from judge B** |
+| jd-judge-b | **High ($1.50–3.00)** | 200K+ | **Extreme** | Almost never × Short | **✅ Different from judge A** |
+| jd-fix-agent | Medium ($0.40–1.00) | 200K+ | Low | Almost never × Short | No |
 
-## Regla de oro
+## Golden rule
 
 ```text
-¿El modelo es caro (>$1.00/1M input)?
+Is the model expensive (>$1.00/1M input)?
 
-  SÍ → ¿La fase es NO repetitiva Y de impacto CRÍTICO?
-         SÍ → ✅ Se justifica.
-         NO → ❌ No se justifica. Buscar modelo <$1.00.
+  YES → Is the phase NON-repetitive AND CRITICAL impact?
+         YES → ✅ Justified.
+         NO  → ❌ Not justified. Look for a model <$1.00.
 
-  NO (<$1.00) → ¿La fase es repetitiva/larga?
-         SÍ → Priorizar modelos <$0.50 con 1M ctx y Usage $60.
-         NO  → Se puede usar cualquier modelo <$1.00 según necesidad de razonamiento.
+  NO (<$1.00) → Is the phase repetitive/long?
+         YES → Prioritize models <$0.50 with 1M ctx and Usage $60.
+         NO  → Any model <$1.00 can be used according to reasoning need.
 ```
 
-> Reglas universales compartidas. Tus reglas personales van en `rules.md` (gitignored), que extienden o sobreescriben estas.
+> Shared universal rules. Your personal rules go in `rules.md` (gitignored), which extend or override these.

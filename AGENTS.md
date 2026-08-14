@@ -1,21 +1,21 @@
 # AGENTS
 
-Este repositorio mantiene sincronizadas las asignaciones de modelos de los perfiles SDD de gentle-ai.
+This repository keeps the model assignments of gentle-ai's SDD profiles in sync.
 
-## Skills disponibles
+## Available skills
 
-| Skill | Ruta | Descripción |
+| Skill | Path | Description |
 |---|---|---|
-| `update-sdd-profiles` | `skills/update-sdd-profiles/SKILL.md` | Flujo completo: sync de datos + regenerar perfiles. |
-| `sync-sdd-profiles` | `skills/sync-sdd-profiles/SKILL.md` | Solo refrescar datos y detectar drift. |
-| `create-sdd-profile` | `skills/create-sdd-profile/SKILL.md` | Crear un perfil nuevo a partir de una suscripción. |
+| `update-sdd-profiles` | `skills/update-sdd-profiles/SKILL.md` | Full flow: data sync + regenerate profiles. |
+| `sync-sdd-profiles` | `skills/sync-sdd-profiles/SKILL.md` | Only refresh data and detect drift. |
+| `create-sdd-profile` | `skills/create-sdd-profile/SKILL.md` | Create a new profile from a subscription. |
 
-## Routing de intenciones
+## Intent routing
 
-- "actualizar / sincronizar / refrescar mis perfiles" → `skills/update-sdd-profiles/SKILL.md` (flujo completo: sync + regenerar).
-- "solo refrescar los datos / ver drift / fetch suscripciones" → `skills/sync-sdd-profiles/SKILL.md`.
-- "crear / agregar un perfil nuevo X con suscripción Y" → `skills/create-sdd-profile/SKILL.md`.
+- "update / sync / refresh my profiles" → `skills/update-sdd-profiles/SKILL.md` (full flow: sync + regenerate).
+- "only refresh the data / see drift / fetch subscriptions" → `skills/sync-sdd-profiles/SKILL.md`.
+- "create / add a new profile X with subscription Y" → `skills/create-sdd-profile/SKILL.md`.
 
-## Nota
+## Note
 
-Antes de actuar, leer (cargar) el `SKILL.md` correspondiente. `skills/_shared/` contiene recetas de soporte y no es invocable.
+Before acting, read (load) the corresponding `SKILL.md`. `skills/_shared/` contains support recipes and is not invokable.

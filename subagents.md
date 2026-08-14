@@ -1,38 +1,38 @@
-# Subagentes SDD de Gentle-AI
+# Gentle-AI SDD subagents
 
-Catálogo canónico de los 19 subagentes del flujo SDD con sus necesidades de modelo.
+Canonical catalog of the 19 subagents of the SDD flow with their model needs.
 
-| Subagente | Categoría | Propósito | Razonamiento | Contexto | Code-focused | Visión | Tools | Frecuencia | Duración | Loop | Impacto de error | Familia distinta a |
+| Agent | Category | Purpose | Reasoning | Context | Code-focused | Vision | Tools | Frequency | Duration | Loop | Error impact | Different family from |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gentle-orchestrator | coordinación | Coordina el flujo SDD: routing, delegación y validación entre fases. | low | 1M | no | no | sí | muy alta | muy larga | no | alto | — |
-| sdd-init | ingestión | Detecta stack, scripts, convenciones y estado mínimo del proyecto. | none | 1M | no | no | sí | 1 vez | corta | no | bajo | — |
-| sdd-explore | análisis de código | Investiga flujos, dependencias, archivos clave e impacto. | medium | 1M | sí | no | sí | media | media | no | medio | — |
-| sdd-propose | razonamiento puro | Define el QUÉ y POR QUÉ del cambio; decisión de mayor impacto. | high | 1M | no | no | opcional | baja | corta-media | no | crítico | — |
-| sdd-spec | escritura técnica | Formaliza requisitos, contratos y criterios de aceptación. | low | alto | sí | no | no | baja | corta | no | medio | — |
-| sdd-design | diseño/arquitectura | Define arquitectura técnica, cambios por capas, UI y pruebas. | medium | 1M | medio | sí | no | baja | media | no | medio-alto | — |
-| sdd-tasks | formateo | Divide el diseño en tareas atómicas, ordenadas y verificables. | none | alto | no | no | no | alta | corta | no | bajo | — |
-| sdd-apply | coding agentic | Escribe el código e implementa tareas en batches. | high | 1M | sí | no | sí | muy alta | muy larga | sí | crítico | ≠ verify |
-| sdd-verify | auditoría | Audita diff, pruebas, regresiones, seguridad y cumplimiento de spec. | high | 1M | sí | no | sí | alta | media | no | alto | ≠ apply |
-| sdd-archive | compresión | Resume artefactos, deja bitácora y notas de commit. | none | 1M | no | no | no | 1 vez | cortísima | no | bajo | — |
-| sdd-onboard | ingestión | Absorbe contexto base, estructura, memoria y reglas del proyecto. | none | 1M | no | sí | sí | 1 vez | media | no | bajo | — |
-| review-risk | razonamiento extremo | Revisa seguridad: vulnerabilidades, permisos, exposición de datos. | max | 200K+ | sí | no | no | media | corta | no | crítico | idealmente ≠ apply |
-| review-readability | auditoría ligera | Revisa naming, complejidad, intención y mantenibilidad. | medium | 200K+ | sí | no | no | media | corta | no | medio | — |
-| review-reliability | auditoría | Revisa tests, determinismo, edge cases y regresiones. | medium | 1M | sí | no | no | media | corta | no | medio-alto | — |
-| review-resilience | auditoría | Revisa errores, retry/backoff, degradación y observabilidad. | medium | 1M | sí | no | no | media | corta | no | medio | — |
-| review-refuter | razonamiento extremo | Evalúa adversariamente los hallazgos BLOCKER/CRITICAL y da un veredicto por hallazgo. | max | 200K+ | sí | no | no | baja | corta | no | crítico | ≠ lente que generó el hallazgo |
-| jd-judge-a | razonamiento extremo | Primer juez ciego del Judgment Day (sin bash). | max | 200K+ | sí | no | no | casi nunca | corta | no | crítico | ≠ judge B y ≠ implementador |
-| jd-judge-b | razonamiento extremo | Segundo juez ciego, de laboratorio distinto al Juez A. | max | 200K+ | sí | no | no | casi nunca | corta | no | crítico | ≠ judge A y ≠ implementador |
-| jd-fix-agent | coding dirigido | Aplica las correcciones quirúrgicas de los veredictos de los jueces. | low-medium | 200K+ | sí | no | sí | casi nunca | corta | no | medio | — |
+| gentle-orchestrator | coordination | Coordinates the SDD flow: routing, delegation, and validation between phases. | low | 1M | no | no | yes | very high | very long | no | high | — |
+| sdd-init | ingestion | Detects stack, scripts, conventions, and minimum project state. | none | 1M | no | no | yes | 1x | short | no | low | — |
+| sdd-explore | code analysis | Investigates flows, dependencies, key files, and impact. | medium | 1M | yes | no | yes | medium | medium | no | medium | — |
+| sdd-propose | pure reasoning | Defines the WHAT and WHY of the change; highest-impact decision. | high | 1M | no | no | optional | low | short-medium | no | critical | — |
+| sdd-spec | technical writing | Formalizes requirements, contracts, and acceptance criteria. | low | high | yes | no | no | low | short | no | medium | — |
+| sdd-design | design/architecture | Defines technical architecture, changes per layer, UI, and tests. | medium | 1M | medium | yes | no | low | medium | no | medium-high | — |
+| sdd-tasks | formatting | Divides the design into atomic, ordered, verifiable tasks. | none | high | no | no | no | high | short | no | low | — |
+| sdd-apply | coding agentic | Writes the code and implements tasks in batches. | high | 1M | yes | no | yes | very high | very long | yes | critical | ≠ verify |
+| sdd-verify | audit | Audits diff, tests, regressions, security, and spec compliance. | high | 1M | yes | no | yes | high | medium | no | high | ≠ apply |
+| sdd-archive | compression | Summarizes artifacts, leaves a log and commit notes. | none | 1M | no | no | no | 1x | very short | no | low | — |
+| sdd-onboard | ingestion | Absorbs base context, structure, memory, and project rules. | none | 1M | no | yes | yes | 1x | medium | no | low | — |
+| review-risk | extreme reasoning | Reviews security: vulnerabilities, permissions, data exposure. | max | 200K+ | yes | no | no | medium | short | no | critical | ideally ≠ apply |
+| review-readability | light audit | Reviews naming, complexity, intent, and maintainability. | medium | 200K+ | yes | no | no | medium | short | no | medium | — |
+| review-reliability | audit | Reviews tests, determinism, edge cases, and regressions. | medium | 1M | yes | no | no | medium | short | no | medium-high | — |
+| review-resilience | audit | Reviews errors, retry/backoff, degradation, and observability. | medium | 1M | yes | no | no | medium | short | no | medium | — |
+| review-refuter | extreme reasoning | Adversarially evaluates BLOCKER/CRITICAL findings and gives a verdict per finding. | max | 200K+ | yes | no | no | low | short | no | critical | ≠ lens that produced the finding |
+| jd-judge-a | extreme reasoning | First blind judge of the Judgment Day (without bash). | max | 200K+ | yes | no | no | almost never | short | no | critical | ≠ judge B and ≠ implementer |
+| jd-judge-b | extreme reasoning | Second blind judge, from a lab different from Judge A. | max | 200K+ | yes | no | no | almost never | short | no | critical | ≠ judge A and ≠ implementer |
+| jd-fix-agent | directed coding | Applies the surgical corrections from the judges' verdicts. | low-medium | 200K+ | yes | no | yes | almost never | short | no | medium | — |
 
-## Cómo leer esta tabla
+## How to read this table
 
-- **Razonamiento**: cuánta capacidad de razonamiento necesita el agente. Escala: `none` (nulo) → `low` (bajo) → `medium` (medio) → `high` (alto) → `max` (extremo).
-- **Contexto**: ventana de contexto mínima necesaria. `128K`, `200K`, `256K`, `1M` tokens, o `alto`/`200K+` cuando no hay un número exacto fijo.
-- **Code-focused**: si el agente trabaja enfocado en código (`sí`/`no`/`medio`).
-- **Visión**: si necesita comprensión visual/multimodal (`sí`/`no`).
-- **Tools**: si necesita acceso a tools/MCP (`sí`/`no`/`opcional`).
-- **Frecuencia**: `1 vez` → `baja` → `media` → `alta` → `muy alta`; `casi nunca` para roles de emergencia.
-- **Duración**: `cortísima` → `corta` → `corta-media` → `media` → `muy larga`.
-- **Loop**: si el agente ejecuta un bucle de trabajo sostenido (`sí`/`no`).
-- **Impacto de error**: `bajo` → `medio` → `medio-alto` → `alto` → `crítico`.
-- **Familia distinta a**: restricción de independencia de laboratorio que debe cumplir la asignación de modelo del agente.
+- **Reasoning**: how much reasoning capacity the agent needs. Scale: `none` (null) → `low` → `medium` → `high` → `max` (extreme).
+- **Context**: minimum context window required. `128K`, `200K`, `256K`, `1M` tokens, or `high`/`200K+` when there is no exact fixed number.
+- **Code-focused**: whether the agent works focused on code (`yes`/`no`/`medium`).
+- **Vision**: whether it needs visual/multimodal comprehension (`yes`/`no`).
+- **Tools**: whether it needs tools/MCP access (`yes`/`no`/`optional`).
+- **Frequency**: `1x` → `low` → `medium` → `high` → `very high`; `almost never` for emergency roles.
+- **Duration**: `very short` → `short` → `short-medium` → `medium` → `very long`.
+- **Loop**: whether the agent runs a sustained work loop (`yes`/`no`).
+- **Error impact**: `low` → `medium` → `medium-high` → `high` → `critical`.
+- **Different family from**: lab-independence restriction that the agent's model assignment must satisfy.

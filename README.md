@@ -1,22 +1,22 @@
 # SDD Profiles
 
-Repositorio que documenta qué modelos de IA asignar a cada subagente de Gentle-AI (los 19 agentes del flujo SDD), por perfil (Balanced, Efficient), y que se mantiene sincronizado con los modelos disponibles de cada suscripción.
+Repository documenting which AI models to assign to each Gentle-AI subagent (the 19 agents of the SDD flow), per profile (Balanced, Efficient), kept in sync with the available models of each subscription.
 
-## Estructura en 3 capas
+## 3-layer structure
 
-| Capa | Archivos | Qué contiene |
+| Layer | Files | What it contains |
 |---|---|---|
-| Conocimiento estable | `subagents.md`, `rules.example.md` | Catálogo de los 19 subagentes y reglas universales de asignación (P1–P7, matriz de decisión, regla de oro). |
-| Datos versionados | `subscriptions/`, `profiles/` | Modelos y precios de cada suscripción, y asignaciones por perfil, organizados por mes. |
-| Config personal | `rules.md`, `considerations.md` | Reglas y consideraciones propias del usuario, gitignored (plantillas en `*.example.md`). |
+| Stable knowledge | `subagents.md`, `rules.example.md` | Catalog of the 19 subagents and universal assignment rules (P1–P7, decision matrix, golden rule). |
+| Versioned data | `subscriptions/`, `profiles/` | Models and prices of each subscription, and assignments per profile, organized by month. |
+| Personal config | `rules.md`, `considerations.md` | The user's own rules and considerations, gitignored (templates in `*.example.md`). |
 
 ## Quick start
 
-1. Clonar el repositorio.
-2. Crear `rules.md` y `considerations.md` a partir de las plantillas `*.example.md` y completarlas con tu contexto.
-3. Indicarle a tu agente qué perfiles (`balanced`, `efficient`) y suscripciones (`opencode-go`, `opencode-zen-free`) querés usar.
-4. Cuando cambien los modelos, pedirle "update my profiles".
+1. Clone the repository.
+2. Create `rules.md` and `considerations.md` from the `*.example.md` templates and fill them in with your context.
+3. Tell your agent which profiles (`balanced`, `efficient`) and subscriptions (`opencode-go`, `opencode-zen-free`) you want to use.
+4. When the models change, ask it to "update my profiles".
 
 ## Skills
 
-Los skills (agentes que automatizan la creación, actualización y verificación de perfiles) se crean en una fase posterior, bajo `skills/`.
+The skills (agents that automate creating, updating, and verifying profiles) are created in a later phase, under `skills/`.

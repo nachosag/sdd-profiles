@@ -11,10 +11,10 @@ user-invocable: false
 
 ## Purpose
 
-Este directorio contiene las recetas de referencia compartidas por los skills de sdd-profiles:
-- `fetch-suscripcion.md` — procedimiento para obtener los datos actuales de una suscripción.
-- `generate-perfil.md` — procedimiento para generar un perfil de asignación de modelos.
+This directory contains the reference recipes shared by the sdd-profiles skills:
+- `fetch-subscription.md` — procedure for fetching the current data of a subscription.
+- `generate-profile.md` — procedure for generating a model assignment profile.
 
 ## Not Invokable
 
-Este paquete es solo de soporte. No se invoca directamente; los skills `sync-sdd-profiles`, `update-sdd-profiles` y `create-sdd-profile` referencian estas recetas.
+This package is support-only. It is not invoked directly; the `sync-sdd-profiles`, `update-sdd-profiles`, and `create-sdd-profile` skills reference these recipes.

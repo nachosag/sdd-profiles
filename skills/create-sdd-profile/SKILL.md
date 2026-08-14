@@ -1,6 +1,6 @@
 ---
 name: create-sdd-profile
-description: "Trigger: crear un perfil nuevo, agregar un perfil, create a new profile. Creates ONE new profile from a subscription without touching existing profiles."
+description: "Trigger: create a new profile, add a profile, crear un perfil nuevo, agregar un perfil. Creates ONE new profile from a subscription without touching existing profiles."
 license: MIT
 metadata:
   author: "nachosag"
@@ -9,33 +9,33 @@ metadata:
 
 ## Activation Contract
 
-Se usa cuando el usuario quiere un perfil NUEVO (ej. "creá un perfil Free con el plan free de Mistral"). No toca perfiles existentes.
+Used when the user wants a NEW profile (e.g. "create a Free profile with Mistral's free plan"). Does not touch existing profiles.
 
 ## Hard Rules
 
-- Aislamiento: nunca modificar perfiles existentes.
-- Si la suscripción no está en `subscriptions/`, fetchearla primero.
-- Registrar la suscripción nueva en `considerations.md`.
+- Isolation: never modify existing profiles.
+- If the subscription is not in `subscriptions/`, fetch it first.
+- Register the new subscription in `considerations.md`.
 
 ## Decision Gates
 
-- ¿Falta el catálogo de la suscripción? → fetch antes de generar.
+- Is the subscription catalog missing? → fetch before generating.
 
 ## Execution Steps
 
-1. Identificar nombre del perfil + suscripción(es).
-2. Si falta el catálogo, seguir `../_shared/fetch-suscripcion.md`.
-3. Agregar la suscripción a `considerations.md` (lista `suscripciones`).
-4. Seguir `../_shared/generate-perfil.md` para ese único perfil.
-5. Reportar.
+1. Identify the profile name + subscription(s).
+2. If the catalog is missing, follow `../_shared/fetch-subscription.md`.
+3. Add the subscription to `considerations.md` (`subscriptions` list).
+4. Follow `../_shared/generate-profile.md` for that single profile.
+5. Report.
 
 ## Output Contract
 
-- El perfil creado (`profiles/<nombre>/<YYYY-MM>.md`).
-- Confirmación de que los demás no se tocaron.
+- The created profile (`profiles/<name>/<YYYY-MM>.md`).
+- Confirmation that the others were not touched.
 
 ## References
 
-- `../_shared/fetch-suscripcion.md`
-- `../_shared/generate-perfil.md`
+- `../_shared/fetch-subscription.md`
+- `../_shared/generate-profile.md`
 - `../../considerations.md`

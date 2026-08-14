@@ -1,6 +1,6 @@
 ---
 name: update-sdd-profiles
-description: "Trigger: actualizar mis perfiles SDD, sincronizar mis perfiles, update/refresh my profiles. Runs data sync then regenerates all the user's profiles."
+description: "Trigger: update my profiles, refresh my profiles, actualizar mis perfiles, sincronizar mis perfiles. Runs data sync then regenerates all the user's profiles."
 license: MIT
 metadata:
   author: "nachosag"
@@ -9,34 +9,34 @@ metadata:
 
 ## Activation Contract
 
-ENTRADA PRINCIPAL. Se activa cuando el usuario dice "actualizar/sincronizar/refrescar mis perfiles" (indistintamente). No confundir con `sync-sdd-profiles` (solo datos).
+MAIN ENTRY POINT. Activates when the user says "update/sync/refresh my profiles" (interchangeably). Do not confuse with `sync-sdd-profiles` (data only).
 
 ## Hard Rules
 
-- Si `rules.md` o `considerations.md` no existen o están vacíos → bootstrap primero (preguntar preferencias, suscripciones y reglas; guardarlas).
-- No regenerar un perfil sin datos frescos (sync primero).
-- Mantener la invariante de familia (verify ≠ apply, judge A ≠ B).
+- If `rules.md` or `considerations.md` do not exist or are empty → bootstrap first (ask for preferences, subscriptions, and rules; save them).
+- Do not regenerate a profile without fresh data (sync first).
+- Maintain the family invariant (verify ≠ apply, judge A ≠ B).
 
 ## Decision Gates
 
-- ¿Configuración presente? Si no → bootstrap.
-- ¿Datos frescos? Si no → sync antes de regenerar.
+- Is the config present? If not → bootstrap.
+- Is the data fresh? If not → sync before regenerating.
 
 ## Execution Steps
 
-1. Bootstrap si falta config.
-2. Ejecutar sync (fetch de suscripciones + detección de subagentes).
-3. Para cada perfil existente en `profiles/` (o los que el usuario indique), seguir `../_shared/generate-perfil.md` y regenerar `profiles/<nombre>/<YYYY-MM>.md`.
+1. Bootstrap if config is missing.
+2. Run sync (subscription fetch + subagent detection).
+3. For each existing profile in `profiles/` (or those the user specifies), follow `../_shared/generate-profile.md` and regenerate `profiles/<name>/<YYYY-MM>.md`.
 
 ## Output Contract
 
-- Perfiles regenerados (lista).
-- Resumen de cambios vs mes anterior.
+- Regenerated profiles (list).
+- Summary of changes vs previous month.
 
 ## References
 
-- `../_shared/fetch-suscripcion.md`
-- `../_shared/generate-perfil.md`
+- `../_shared/fetch-subscription.md`
+- `../_shared/generate-profile.md`
 - `../../subagents.md`
 - `../../rules.example.md`
 - `../../considerations.example.md`
