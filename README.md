@@ -6,7 +6,7 @@ A repository that documents which AI model to assign to each of gentle-ai's SDD 
 
 Separating things by how often they change keeps the repo from going stale:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │  Stable knowledge      subagents.md · rules.example.md          │  ← changes rarely
 ├─────────────────────────────────────────────────────────────────┤
