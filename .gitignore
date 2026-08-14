@@ -1,0 +1,6 @@
+# Personal configuration (gitignored; see *.example.md)
+rules.md
+considerations.md
+
+# Local Pi runtime state
+.atl/
