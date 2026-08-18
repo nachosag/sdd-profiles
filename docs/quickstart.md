@@ -41,4 +41,4 @@ When providers change their catalogs — which happens monthly — just tell you
 
 ## What you get
 
-Each profile is a markdown file with a table mapping the 19 SDD subagents to a primary model, fallbacks, a thinking level, and a short justification — for example, `sdd-apply` in the balanced profile maps to `opencode-go/deepseek-v4-pro` with `qwen3.7-plus` as a fallback. See [Usage](./usage.md) for the complete workflow and [File reference](./file-reference.md) for what each file contains.
+Each profile is a markdown file with a table mapping the 20 SDD subagents to a primary model, fallbacks, a thinking level, and a short justification — for example, `sdd-apply` in the balanced profile maps to `opencode-go/deepseek-v4-pro` with `qwen3.7-plus` as a fallback. See [Usage](./usage.md) for the complete workflow and [File reference](./file-reference.md) for what each file contains.

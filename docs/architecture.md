@@ -9,7 +9,7 @@ This repository answers one recurring question: **which AI model should each of 
 Answering that question once is easy. Keeping the answer correct over time is the hard part, because two things change independently and at different speeds:
 
 1. **Model catalogs change monthly.** Providers add models, remove them, deprecate them, and re-price them. The `opencode-go` subscription went from removing MiniMax M2.5 in August 2026 to adding GPT 5.6 Luna and Qwen3.8 Max. The `opencode-zen-free` subscription swapped North Mini Code Free for Hy3 Free and Nemotron 3.5 Lightning Free in the same month.
-2. **gentle-ai adds subagents over time.** The SDD flow already has 19 agents (orchestrator, init, explore, propose, spec, design, tasks, apply, verify, archive, onboard, five reviewers, and three judgment-day roles), and new ones appear as the workflow evolves.
+2. **gentle-ai adds subagents over time.** The SDD flow already has 20 agents (orchestrator, init, explore, propose, spec, design, tasks, apply, verify, archive, onboard, six reviewers, and three judgment-day roles), and new ones appear as the workflow evolves.
 
 A single handwritten document that mixes "what each agent needs" with "what models your subscription currently offers" goes stale almost immediately: the moment one provider changes a price, every assignment built on top of that price is wrong.
 
@@ -19,7 +19,7 @@ The repository splits the problem into three layers, ordered by how often each o
 
 | Layer | Changes | Files | What it holds |
 |---|---|---|---|
-| **Stable knowledge** | Rarely (when gentle-ai adds an agent or the assignment principles change) | `subagents.md`, `rules.example.md` | What the 19 agents are and what they need; the universal rules (P1–P7, decision matrix, golden rule) that never depend on which models you happen to have. |
+| **Stable knowledge** | Rarely (when gentle-ai adds an agent or the assignment principles change) | `subagents.md`, `rules.example.md` | What the 20 agents are and what they need; the universal rules (P1–P7, decision matrix, golden rule) that never depend on which models you happen to have. |
 | **Volatile data** | Monthly (when providers change catalogs) | `subscriptions/<name>/<YYYY-MM>.md` | The model catalog of each subscription for a given month — prices, context, reasoning, vision, tools, usage, and request limits. |
 | **Derived output** | Monthly (recomputed from the two layers above) | `profiles/<name>/<YYYY-MM>.md` | The actual assignments: which model each agent gets, plus fallbacks, thinking level, and the justification. |
 
@@ -31,9 +31,9 @@ This mirrors a common engineering pattern: keep the *rules* and the *data* separ
 
 | Concept | Definition |
 |---|---|
-| **Subagent** | One of the 19 agents in the SDD flow (e.g. `sdd-apply`, `review-risk`, `jd-judge-b`). Each has a defined profile of needs — reasoning level, minimum context, whether it needs vision or tools, how often it runs, and how much an error costs. |
+| **Subagent** | One of the 20 agents in the SDD flow (e.g. `sdd-apply`, `review-risk`, `jd-judge-b`). Each has a defined profile of needs — reasoning level, minimum context, whether it needs vision or tools, how often it runs, and how much an error costs. |
 | **Subscription** | A specific plan you have access to (e.g. `opencode-go`, `opencode-zen-free`). Each subscription has a *catalog*: the list of models it exposes, with prices and capabilities. |
-| **Profile** | A named assignment strategy (e.g. `balanced`, `efficient`) that maps each of the 19 agents to a primary model and fallbacks, given one or more subscriptions and your budget. |
+| **Profile** | A named assignment strategy (e.g. `balanced`, `efficient`) that maps each of the 20 agents to a primary model and fallbacks, given one or more subscriptions and your budget. |
 | **Rule** | A directive that tells the generator *how to choose*. Rules live in `rules.example.md` (universal, committed) and `rules.md` (personal, gitignored). |
 | **Consideration** | A fact about *your* context — which subscriptions you have, your budget, your privacy constraints. Considerations live in `considerations.example.md` (template, committed) and `considerations.md` (personal, gitignored). |
 

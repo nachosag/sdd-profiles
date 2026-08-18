@@ -6,7 +6,7 @@ A reference of every file and directory in the repository, what it's for, and â€
 
 ### `subagents.md`
 
-The canonical catalog of the 19 SDD subagents and their model needs. It contains a single table with 13 columns:
+The canonical catalog of the 20 SDD subagents and their model needs. It contains a single table with 13 columns:
 
 | Column | Meaning |
 |---|---|

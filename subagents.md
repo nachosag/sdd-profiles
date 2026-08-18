@@ -1,6 +1,6 @@
 # Gentle-AI SDD subagents
 
-Canonical catalog of the 19 subagents of the SDD flow with their model needs.
+Canonical catalog of the 20 subagents of the SDD flow with their model needs.
 
 | Agent | Category | Purpose | Reasoning | Context | Code-focused | Vision | Tools | Frequency | Duration | Loop | Error impact | Different family from |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -20,6 +20,7 @@ Canonical catalog of the 19 subagents of the SDD flow with their model needs.
 | review-reliability | audit | Reviews tests, determinism, edge cases, and regressions. | medium | 1M | yes | no | no | medium | short | no | medium-high | — |
 | review-resilience | audit | Reviews errors, retry/backoff, degradation, and observability. | medium | 1M | yes | no | no | medium | short | no | medium | — |
 | review-refuter | extreme reasoning | Adversarially evaluates BLOCKER/CRITICAL findings and gives a verdict per finding. | max | 200K+ | yes | no | no | low | short | no | critical | ≠ lens that produced the finding |
+| review-validator | validation | Validates a bounded correction against the immutable trees: confirms the fix resolves the finding without regression, or reports it could not be inspected. | high | 200K+ | yes | no | yes | low | short | no | high | — |
 | jd-judge-a | extreme reasoning | First blind judge of the Judgment Day (without bash). | max | 200K+ | yes | no | no | almost never | short | no | critical | ≠ judge B and ≠ implementer |
 | jd-judge-b | extreme reasoning | Second blind judge, from a lab different from Judge A. | max | 200K+ | yes | no | no | almost never | short | no | critical | ≠ judge A and ≠ implementer |
 | jd-fix-agent | directed coding | Applies the surgical corrections from the judges' verdicts. | low-medium | 200K+ | yes | no | yes | almost never | short | no | medium | — |

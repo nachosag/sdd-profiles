@@ -37,7 +37,7 @@ start ──► (use) ──► update ──► (use) ──► update ──�
 
 ## What a generated profile contains
 
-Each `profiles/<name>/<YYYY-MM>.md` maps the 19 SDD subagents to models. For each agent the table records:
+Each `profiles/<name>/<YYYY-MM>.md` maps the 20 SDD subagents to models. For each agent the table records:
 
 | Field | Meaning | Example (from `profiles/balanced/2026-08.md`) |
 |---|---|---|

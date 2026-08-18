@@ -1,6 +1,6 @@
 # Universal model assignment rules
 
-Shared rules for assigning models to the 19 SDD subagents. They are independent of which subscriptions the user has.
+Shared rules for assigning models to the 20 SDD subagents. They are independent of which subscriptions the user has.
 
 ## Non-negotiable principles (P1–P7)
 
@@ -36,6 +36,7 @@ For each agent, evaluate against 5 dimensions. The type of model it needs emerge
 | review-reliability | Medium ($0.40–1.00) | 1M | Medium | Medium × Short | No |
 | review-resilience | Medium ($0.40–1.00) | 1M | Medium | Medium × Short | No |
 | review-refuter | **High ($0.40–3.00)** | 200K+ | **Extreme** | Almost never × Short | **✅ Different from the review lens** |
+| review-validator | Medium ($0.40–1.00) | 200K+ | High | Low × Short | No |
 | jd-judge-a | **High ($1.50–3.00)** | 200K+ | **Extreme** | Almost never × Short | **✅ Different from judge B** |
 | jd-judge-b | **High ($1.50–3.00)** | 200K+ | **Extreme** | Almost never × Short | **✅ Different from judge A** |
 | jd-fix-agent | Medium ($0.40–1.00) | 200K+ | Low | Almost never × Short | No |

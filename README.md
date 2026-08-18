@@ -18,7 +18,7 @@ Separating things by how often they change keeps the repo from going stale:
 
 | Layer | Files | What it contains |
 |---|---|---|
-| Stable knowledge | `subagents.md`, `rules.example.md` | The 19 SDD subagents and their needs, plus the universal assignment rules (P1–P7, decision matrix, golden rule). |
+| Stable knowledge | `subagents.md`, `rules.example.md` | The 20 SDD subagents and their needs, plus the universal assignment rules (P1–P7, decision matrix, golden rule). |
 | Volatile data | `subscriptions/` | Each subscription's model catalog — prices, context, reasoning, vision, tools, usage, limits — versioned by month. |
 | Derived output | `profiles/` | The model assignment per profile (balanced, efficient), regenerated monthly from the two layers above. |
 | Personal config | `rules.md`, `considerations.md` | Your own rules and context, gitignored (templates in `*.example.md`). |

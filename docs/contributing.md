@@ -29,11 +29,11 @@ Create `profiles/<name>/<YYYY-MM>.md` by applying the generation recipe in `skil
 
 - Filter models by cost, context, reasoning, vision, and tools, per `subagents.md`.
 - Respect the family restrictions (P2 verify ≠ apply, P3 judge A ≠ judge B, P7 refuter ≠ lens).
-- Include the header, the 19-row assignment table, and the cost summary.
+- Include the header, the 20-row assignment table, and the cost summary.
 
 ## Improving `subagents.md`
 
-`subagents.md` documents the 19 agents and their needs. Changes here are high-impact — every profile is derived from it — so:
+`subagents.md` documents the 20 agents and their needs. Changes here are high-impact — every profile is derived from it — so:
 
 - Keep the 13-column schema; don't add columns casually.
 - When gentle-ai adds or removes a subagent, update the table and the "How to read this table" scales.
