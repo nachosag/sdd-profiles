@@ -25,7 +25,7 @@ For each agent, evaluate against 5 dimensions. The type of model it needs emerge
 | explore | Medium ($0.15–1.00) | 1M | Medium | Medium × Medium | No |
 | propose | **High ($1.50–3.00)** | 1M | **High** | Low × Short | No |
 | spec | Medium ($0.40–1.00) | 272K+ | Low | Low × Short | No |
-| design | Low ($0.15–0.50) | 1M | Medium | Low × Medium | No |
+| design | High ($1.50–3.00) | 1M | High | Low × Medium | No |
 | tasks | Minimum ($0.05–0.40) | 1M | Null | High × Short | No |
 | apply | **Medium-low ($0.15–1.00)** | **1M** | **High** | **Very high × Very long** | No |
 | verify | **Medium-low ($0.15–1.00)** | 1M | High | **High × Medium** | **✅ Different from apply** |

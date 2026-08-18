@@ -9,7 +9,7 @@ Canonical catalog of the 19 subagents of the SDD flow with their model needs.
 | sdd-explore | code analysis | Investigates flows, dependencies, key files, and impact. | medium | 1M | yes | no | yes | medium | medium | no | medium | — |
 | sdd-propose | pure reasoning | Defines the WHAT and WHY of the change; highest-impact decision. | high | 1M | no | no | optional | low | short-medium | no | critical | — |
 | sdd-spec | technical writing | Formalizes requirements, contracts, and acceptance criteria. | low | high | yes | no | no | low | short | no | medium | — |
-| sdd-design | design/architecture | Defines technical architecture, changes per layer, UI, and tests. | medium | 1M | medium | yes | no | low | medium | no | medium-high | — |
+| sdd-design | design/architecture | Defines technical architecture, changes per layer, UI, and tests. | high | 1M | medium | yes | no | low | medium | no | high | — |
 | sdd-tasks | formatting | Divides the design into atomic, ordered, verifiable tasks. | none | high | no | no | no | high | short | no | low | — |
 | sdd-apply | coding agentic | Writes the code and implements tasks in batches. | high | 1M | yes | no | yes | very high | very long | yes | critical | ≠ verify |
 | sdd-verify | audit | Audits diff, tests, regressions, security, and spec compliance. | high | 1M | yes | no | yes | high | medium | no | high | ≠ apply |
