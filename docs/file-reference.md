@@ -70,7 +70,7 @@ One file per subscription per month. For example `subscriptions/opencode-go/2026
 Format:
 
 - **Header**: plan and price, usage limits, privacy, source URL + fetch date.
-- **Model table**, one row per model, with columns: `Model`, `ID`, `Family/provider`, `Input/1M`, `Output/1M`, `Cached read`, `Cached write`, `Context`, `Reasoning`, `Vision`, `Tools`, `Usage/subsidy`, `req/5h`, `Notes`.
+- **Model table**, one row per model, with columns: `Model`, `ID`, `Provider`, `Family`, `Input/1M`, `Output/1M`, `Cached read`, `Cached write`, `Context`, `Input cap`, `Output cap`, `Reasoning`, `Vision`, `Tools`, `Structured`, `Knowledge`, `Usage/subsidy`, `req/5h`, `Notes`.
 - **Changes vs previous month**: a bullet list of removed models, added models, and corrected estimates.
 
 ### `profiles/<name>/<YYYY-MM>.md`

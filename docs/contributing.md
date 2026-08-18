@@ -15,11 +15,13 @@ Create `subscriptions/<name>/<YYYY-MM>.md` with the header (plan, limits, privac
 
 The source of truth depends on the provider — see `skills/_shared/fetch-subscription.md`:
 
-| Subscription | Data source |
-|---|---|
-| `opencode-go` | `https://opencode.ai/docs/go/` (prices, limits, privacy) + `https://opencode.ai/zen/go/v1/models` (model list/IDs); validate IDs with the TUI's `/models` when available. |
-| `opencode-zen-free` | `https://opencode.ai/docs/zen/` + `https://opencode.ai/zen/v1/models`. |
-| `openai`, `claude`, `gemini`, `mistral`, others | Not yet defined — use the provider's pricing page and official model list. Mark the source as pending until a canonical one is established. |
+| Subscription | IDs | Characteristics | Plan prices & limits |
+|---|---|---|---|
+| `opencode-go` | `https://opencode.ai/zen/go/v1/models` | `https://models.dev/api.json` → provider `opencode-go` | `https://opencode.ai/docs/go/` (prices, limits, privacy) + TUI `/models` |
+| `opencode-zen-free` | `https://opencode.ai/zen/v1/models` | `https://models.dev/api.json` → provider `opencode` | `https://opencode.ai/docs/zen/` |
+| `openai`, `claude`, `gemini`, `mistral`, others | official model list | `https://models.dev/api.json` (if listed) | pricing page + docs — mark as pending |
+
+`https://models.dev/api.json` is the registry OpenCode itself uses. Use it for **capabilities** (context, reasoning, vision, tools, modalities, release date), not for plan prices: its `cost.*` values are raw provider rates, which diverge from the Go plan's `$15`/`$60` subsidy tiers and `req/5h` limits.
 
 Do **not** invent prices or model IDs. If a provider has no defined source, mark it as pending and say so.
 
