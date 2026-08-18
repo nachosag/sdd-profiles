@@ -31,8 +31,10 @@ Used when the user wants a NEW profile (e.g. "create a Free profile with Mistral
 
 ## Output Contract
 
+- `subscriptions/models.md` updated (if new models were added).
+- The created subscription file (`subscriptions/<name>/<YYYY-MM>.md`).
 - The created profile (`profiles/<name>/<YYYY-MM>.md`).
-- Confirmation that the others were not touched.
+- Confirmation that existing profiles were not touched.
 
 ## References
 

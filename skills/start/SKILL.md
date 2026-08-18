@@ -33,12 +33,15 @@ Load when the user wants to START or set up the repo for the first time (or reco
 2. Collect subscriptions + budget + privacy + preferences → write `considerations.md` following `considerations.example.md`.
 3. Collect personal rules (offer the examples from `rules.example.md`) → write `rules.md`.
 4. Ask which profiles to create (name, purpose, subscriptions each uses).
-5. For each profile, follow `../_shared/generate-profile.md`.
-6. Report done + tell the user "next time, just say 'update my profiles'".
+5. For each subscription, follow `../_shared/fetch-subscription.md` to sync `models.md` and the subscription file.
+6. For each profile, follow `../_shared/generate-profile.md`.
+7. Report done + tell the user "next time, just say 'update my profiles'".
 
 ## Output Contract
 
 - `considerations.md` + `rules.md` written.
+- `subscriptions/models.md` synced (model capabilities).
+- `subscriptions/<name>/<YYYY-MM>.md` generated (provider-controlled data).
 - `profiles/<name>/<YYYY-MM>.md` generated.
 - Summary of what was configured.
 

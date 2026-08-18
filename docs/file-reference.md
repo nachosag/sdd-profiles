@@ -63,14 +63,25 @@ considerations.md
 
 ## Directories
 
-### `subscriptions/<name>/<YYYY-MM>.md`
+### `subscriptions/models.md`
 
-One file per subscription per month. For example `subscriptions/opencode-go/2026-08.md`.
+Canonical model catalog — capabilities inherent to each model, independent of which provider offers it. Shared across all subscriptions.
 
 Format:
 
-- **Header**: plan and price, usage limits, privacy, source URL + fetch date.
-- **Model table**, one row per model, with columns: `Model`, `ID`, `Provider`, `Family`, `Input/1M`, `Output/1M`, `Cached read`, `Cached write`, `Context`, `Input cap`, `Output cap`, `Reasoning`, `Vision`, `Tools`, `Structured`, `Knowledge`, `Usage/subsidy`, `req/5h`, `Notes`.
+- **Header**: source URL + fetch date, pointer to how subscriptions reference it.
+- **Model table**, one row per unique model, with columns: `Model`, `Provider`, `Family`, `Output cap`, `Reasoning`, `Vision`, `Tools`, `Structured`, `Knowledge`.
+- **Provider overrides**: table of known differences when a provider offers different capabilities than the canonical catalog.
+
+### `subscriptions/<name>/<YYYY-MM>.md`
+
+One file per subscription per month. For example `subscriptions/opencode-go/2026-08.md`. Contains only provider-controlled fields; inherent capabilities live in `models.md`.
+
+Format:
+
+- **Header**: plan and price, usage limits, privacy, source URL + fetch date, pointer to `../models.md`.
+- **Model table**, one row per model, with columns: `Model`, `ID`, `Input/1M`, `Output/1M`, `Cached read`, `Cached write`, `Context`, `Input cap`, `Usage/subsidy`, `req/5h`, `Notes`.
+- **Provider overrides** (optional): table of capability differences vs `models.md` when the provider caps or changes model properties.
 - **Changes vs previous month**: a bullet list of removed models, added models, and corrected estimates.
 
 ### `profiles/<name>/<YYYY-MM>.md`
@@ -93,8 +104,8 @@ The four invokable skills plus a shared support directory.
 | `skills/update-sdd-profiles/SKILL.md` | Full flow: sync + regenerate. |
 | `skills/sync-sdd-profiles/SKILL.md` | Data-only refresh + drift report. |
 | `skills/create-sdd-profile/SKILL.md` | Create one new profile. |
-| `skills/_shared/fetch-subscription.md` | Recipe: fetch one subscription's catalog, including the source-of-truth table per provider, the fields to extract, and the diff procedure. |
-| `skills/_shared/generate-profile.md` | Recipe: generate one profile (inputs, algorithm, family restrictions, final checklist, write format). |
+| `skills/_shared/fetch-subscription.md` | Recipe: fetch one subscription's catalog — syncs `models.md` (inherent capabilities) and the subscription file (provider-controlled fields), including the diff procedure. |
+| `skills/_shared/generate-profile.md` | Recipe: generate one profile by merging `models.md` + subscription (inputs, merge logic, algorithm, family restrictions, final checklist, write format). |
 | `skills/_shared/SKILL.md` | Marks `_shared` as support-only (not invokable). |
 
 ### `docs/`

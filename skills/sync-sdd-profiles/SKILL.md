@@ -1,6 +1,6 @@
 ---
 name: sync-sdd-profiles
-description: "Trigger: sync subscription data, refresh catalogs, drift, refrescar datos, fetch suscripciones. Fetches the user's subscription catalogs and detects new gentle-ai subagents, then reports drift."
+description: "Trigger: sync subscription data, refresh catalogs, drift, refrescar datos, fetch suscripciones. Syncs model capabilities to models.md and fetches subscription catalogs, then reports drift."
 license: MIT
 metadata:
   author: "nachosag"
@@ -32,8 +32,9 @@ Used when the user wants to ONLY refresh the data (subscription catalogs + subag
 
 ## Output Contract
 
-- Drift report: changed subscriptions, new/removed/repriced models, new subagents.
-- Written `subscriptions/` files.
+- Drift report: changed subscriptions, new/removed/repriced models, capability changes in models.md, new subagents.
+- Written `subscriptions/models.md` (synced model capabilities).
+- Written `subscriptions/<name>/` files (provider-controlled data).
 
 ## References
 

@@ -20,7 +20,8 @@ The repository splits the problem into three layers, ordered by how often each o
 | Layer | Changes | Files | What it holds |
 |---|---|---|---|
 | **Stable knowledge** | Rarely (when gentle-ai adds an agent or the assignment principles change) | `subagents.md`, `rules.example.md` | What the 20 agents are and what they need; the universal rules (P1–P7, decision matrix, golden rule) that never depend on which models you happen to have. |
-| **Volatile data** | Monthly (when providers change catalogs) | `subscriptions/<name>/<YYYY-MM>.md` | The model catalog of each subscription for a given month — prices, context, reasoning, vision, tools, usage, and request limits. |
+| **Model capabilities** | When models.dev changes (new models, deprecated models, capability drift) | `subscriptions/models.md` | Canonical model characteristics — reasoning, vision, tools, structured output, output cap, knowledge cutoff. Shared across all subscriptions. |
+| **Volatile data** | Monthly (when providers change pricing or limits) | `subscriptions/<name>/<YYYY-MM>.md` | Provider-controlled data for each subscription — prices, context caps, rate limits, usage tiers. References `models.md` for capabilities. |
 | **Derived output** | Monthly (recomputed from the two layers above) | `profiles/<name>/<YYYY-MM>.md` | The actual assignments: which model each agent gets, plus fallbacks, thinking level, and the justification. |
 
 The key idea is that **the derived output is never edited by hand.** A profile is *generated* by combining the stable knowledge (agent needs + rules) with the volatile data (current model catalog). When a provider changes a price, you re-fetch the data and regenerate the profile — you don't hand-edit 19 rows.
@@ -32,7 +33,7 @@ This mirrors a common engineering pattern: keep the *rules* and the *data* separ
 | Concept | Definition |
 |---|---|
 | **Subagent** | One of the 20 agents in the SDD flow (e.g. `sdd-apply`, `review-risk`, `jd-judge-b`). Each has a defined profile of needs — reasoning level, minimum context, whether it needs vision or tools, how often it runs, and how much an error costs. |
-| **Subscription** | A specific plan you have access to (e.g. `opencode-go`, `opencode-zen-free`). Each subscription has a *catalog*: the list of models it exposes, with prices and capabilities. |
+| **Subscription** | A specific plan you have access to (e.g. `opencode-go`, `opencode-zen-free`). Each subscription has a *catalog*: the list of models it exposes, with prices, context caps, and rate limits. Capabilities live in the shared `models.md`. |
 | **Profile** | A named assignment strategy (e.g. `balanced`, `efficient`) that maps each of the 20 agents to a primary model and fallbacks, given one or more subscriptions and your budget. |
 | **Rule** | A directive that tells the generator *how to choose*. Rules live in `rules.example.md` (universal, committed) and `rules.md` (personal, gitignored). |
 | **Consideration** | A fact about *your* context — which subscriptions you have, your budget, your privacy constraints. Considerations live in `considerations.example.md` (template, committed) and `considerations.md` (personal, gitignored). |
@@ -56,6 +57,7 @@ You never re-write the job descriptions or the hiring rules just because an agen
 subagents.md ─────────────┐
 rules.example.md / rules.md ──┤
 considerations.example.md / considerations.md ──┤
+subscriptions/models.md ─────────┤
 subscriptions/<name>/<YYYY-MM>.md ──┴──►  generate-profile  ──►  profiles/<name>/<YYYY-MM>.md
 ```
 
