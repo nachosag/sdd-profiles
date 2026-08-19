@@ -4,7 +4,7 @@ Canonical catalog of the 20 subagents of the SDD flow with their model needs.
 
 | Agent | Category | Purpose | Reasoning | Context | Code-focused | Vision | Tools | Frequency | Duration | Loop | Error impact | Different family from |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gentle-orchestrator | coordination | Coordinates the SDD flow: routing, delegation, and validation between phases. | low | 1M | no | no | yes | very high | very long | no | high | — |
+| gentle-orchestrator | coordination | Coordinates the SDD flow: routing, delegation, synthesis, and validation between phases. | high | 1M | no | no | yes | very high | very long | no | high | — |
 | sdd-init | ingestion | Detects stack, scripts, conventions, and minimum project state. | none | 1M | no | no | yes | 1x | short | no | low | — |
 | sdd-explore | code analysis | Investigates flows, dependencies, key files, and impact. | medium | 1M | yes | no | yes | medium | medium | no | medium | — |
 | sdd-propose | pure reasoning | Defines the WHAT and WHY of the change; highest-impact decision. | high | 1M | no | no | optional | low | short-medium | no | critical | — |

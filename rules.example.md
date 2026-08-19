@@ -10,7 +10,7 @@ Shared rules for assigning models to the 20 SDD subagents. They are independent 
 | **P2** | **Verify must use a model from a DIFFERENT FAMILY than apply.** | Author ≠ auditor principle. If the same model reviews what it wrote, the biases are perpetuated. |
 | **P3** | **Judgment Day requires two DIFFERENT models for judge A and B.** | Blind adversarial review with independent perspectives. If both agree, the finding is solid. |
 | **P4** | **Formatting/admin phases (tasks, init, archive, onboard) use the CHEAPEST available model.** | They do not require reasoning. Paying more does not improve the output. In Efficient, prefer Zen Free (zero cost). |
-| **P5** | **The orchestrator needs 1M ctx + stability, NOT premium reasoning.** | Its job is reliable routing across long sessions, not solving complex problems. |
+| **P5** | **The orchestrator is the decision layer: high reasoning for synthesis, delegation, and judgment — not cheap routing.** | It decides what each model does, supervises partial results, and synthesizes them — exactly where marginal intelligence changes the outcome. The orchestrator does not execute, so its token volume stays low; on fixed subscriptions (e.g. opencode-go $10/mo) the marginal cost is contained. |
 | **P6** | **Model cost must be proportional to `(error impact) ÷ (execution frequency)`.** | Very high-impact but low-frequency phases (propose, security) justify a premium price. High-impact AND high-frequency phases (apply) need the best model you can afford at volume. |
 | **P7** | **`review-refuter` must be from a family different from the review lens that produced the finding it is evaluating.** | A refuter from the same lab tends to confirm the biases of the finding it is evaluating. |
 
@@ -20,7 +20,7 @@ For each agent, evaluate against 5 dimensions. The type of model it needs emerge
 
 | Agent | Justifiable cost | Context | Reasoning | Frequency×Duration | Different model? |
 |---|---|---|---|---|---|
-| orchestrator | Low ($0.15–0.50) | 1M | Low | Very high × Very long | No |
+| orchestrator | **Medium ($0.40–1.00)** | 1M | **High** | Very high × Very long | No |
 | init | Minimum ($0.05–0.15) | 1M | Null | 1x × Short | No |
 | explore | Medium ($0.15–1.00) | 1M | Medium | Medium × Medium | No |
 | propose | **High ($1.50–3.00)** | 1M | **High** | Low × Short | No |
